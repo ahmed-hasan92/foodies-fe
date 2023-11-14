@@ -1,0 +1,51 @@
+.active {
+  text-decoration: underline;
+  /* border: 2px solid rgb(#b73232); */
+}
+
+/* Carousel Customization */
+.slick-slide {
+  padding: 0 10px; /* Adjust space between slides */
+}
+
+.slick-list {
+  margin: 0 -10px; /* Counteract the padding for the edge slides */
+}
+
+/* Arrow Customization */
+.custom-arrow {
+  z-index: 1; /* Ensure arrows are above other elements */
+  background-color: #ddd; /* Arrow background color */
+  border-radius: 50%; /* Circular arrow buttons */
+  width: 30px; /* Arrow button width */
+  height: 30px; /* Arrow button height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Arrow positioning and styling */
+.custom-arrow.slick-prev {
+  left: -35px; /* Distance from the left edge */
+}
+
+.custom-arrow.slick-next {
+  right: -35px; /* Distance from the right edge */
+}
+
+/* Arrow icons, you can use text, an image, or font icons */
+.custom-arrow:before {
+  font-family: "slick"; /* Slick uses a font for arrows */
+  font-size: 20px; /* Size of the arrow icon */
+  line-height: 1;
+  color: #333; /* Arrow color */
+  opacity: 0.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hover state for arrows */
+.custom-arrow:hover {
+  background-color: #ccc; /* Darker background on hover */
+  opacity: 1; /* Fully opaque on hover */
+}

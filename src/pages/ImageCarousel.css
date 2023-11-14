@@ -1,0 +1,25 @@
+.carousel-container {
+  width: 620px;
+  height: 620px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-image {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s, transform 1s;
+}
+
+.current-image {
+  opacity: 1;
+  transform: scale(1); /* Optional: Return to normal scale */
+}
+
+/* transform: scale(0.9); */
