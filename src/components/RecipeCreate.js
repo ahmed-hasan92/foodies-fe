@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createRecipe } from "../api/recipe";
-// import { getAllCategories } from "../api/category";
-import { Delete } from "lucide-react";
 import CategoryList from "./CategoryList";
 import IngredientsDropdown from "./IngredientsDropdown";
 

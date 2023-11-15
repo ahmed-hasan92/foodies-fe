@@ -9,15 +9,19 @@ const Home = () => {
   const onClose = () => setShow(false);
   const onOpen = () => setShow(true);
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [query, setQuery] = useState("");
 
   const handleRecipeSelect = (id) => {
     setSelectedRecipeId(id);
   };
 
-  // const noteList = notes?.map((note) => <NoteItem key={note._id} {...note} />);
+  const handleSearch = (e) => {
+    setQuery(e.target.value); // Update the search query state
+  };
 
   return (
-    <div className="w-full h-full flex flex-col gap-[60px] bg-[#333333] px-[150px] pt-[150px]">
+    <div className="w-full min-h-screen flex flex-col gap-[60px] bg-[#333333] px-[150px] pt-[150px]">
       <div className="w-full flex flex-row justify-between gap-[40px] text-center align-content">
         <div className="w-full border bg-white p-2 rounded-full">
           <input
@@ -25,7 +29,7 @@ const Home = () => {
             id="search"
             className="form-control w-full h-full"
             placeholder="Search by Chef and Recipe"
-            // onChange={handleSearch}
+            onChange={handleSearch}
           />
         </div>
         <div className="flex justify-center items-center">
@@ -43,7 +47,10 @@ const Home = () => {
           </h1>
         </div>
         <div className="flex flex-row overflow-auto hover:overflow-scroll scroll no-scrollbar">
-          <CategoryList />
+          <CategoryList
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
         </div>
       </div>
       <div>
@@ -58,13 +65,14 @@ const Home = () => {
         </button>
       </div>
       <div class="flex flex-row gap-[30px] w-full h-full items-center justify-around ">
-        <RecipeList onRecipeSelect={handleRecipeSelect} />
+        <RecipeList
+          onRecipeSelect={handleRecipeSelect}
+          selectedCategory={selectedCategory}
+          query={query}
+        />
         {selectedRecipeId && <RecipeDetails recipeId={selectedRecipeId} />}
       </div>
       <RecipeCreate show={show} onClose={onClose} onSave={() => {}} />
-      <div className="w-full h-full flex justify-center items-center">
-        <RecipeDetails />
-      </div>
     </div>
   );
 };

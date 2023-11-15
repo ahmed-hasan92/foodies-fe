@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -9,7 +8,7 @@ const RecipeItem = ({ recipe, recipeId }) => {
 
   return (
     <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-2xl">
-      <div class="h-96 w-72">
+      <div class="h-96 w-[269px]">
         <img
           class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125 rounded-2xl"
           src={`http://localhost:8000/${recipe.image}`}
@@ -24,7 +23,7 @@ const RecipeItem = ({ recipe, recipeId }) => {
         <p class="mb-3 text-base italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           {recipe.shortDescription}
         </p>
-        <Link to={`/recipes/${recipeId}`}>
+        <Link to={`/recipes/chosen/${recipe._id}`}>
           <button class="rounded-full bg-neutral-900 py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60 cursor-pointer hover:bg-[#910808] hover:scale-125 hover:transition-transform hover:duration-500">
             See More
           </button>
@@ -50,3 +49,5 @@ export default RecipeItem;
 </div>
 </div> */
 }
+
+// h-96 w-72

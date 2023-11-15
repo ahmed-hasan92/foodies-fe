@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { register } from "../api/auth";
+import { checkToken, register } from "../api/auth";
 
 const Register = () => {
   const [username, setUserName] = useState("");
@@ -14,7 +14,7 @@ const Register = () => {
     mutationKey: ["register"],
     mutationFn: () => register(username, password, image),
     onSuccess: () => {
-      setUser(true);
+      setUser(checkToken());
       navigate("/");
     },
   });
@@ -42,7 +42,7 @@ const Register = () => {
   }
 
   return (
-    <div className="w-full h-screen flex bg-[#333333] flex-row pt-[50px]">
+    <div className="w-full min-h-screen flex bg-[#333333] flex-row pt-[50px]">
       <div className="w-full flex justify-center items-center lg:flex-row  md:flex-col sm:flex-col lg:gap-[50px] lg:pl-[50px] sm:pl-[20px]">
         <form
           onSubmit={handleFormSubmit}

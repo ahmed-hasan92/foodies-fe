@@ -71,12 +71,12 @@ function NavBar() {
                   My Profile
                 </ListItem>
               </NavLink>
-              <NavLink to="recipes">
+              <NavLink to="/chefs">
                 <ListItem className="w-fit px-[10px] flex justify-center lg:text-xl sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
                   <ListItemPrefix>
                     <QueueListIcon className="h-5 w-5" />
                   </ListItemPrefix>
-                  Recipes
+                  Chefs
                 </ListItem>
               </NavLink>
               <ListItem

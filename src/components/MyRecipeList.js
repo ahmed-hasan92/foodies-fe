@@ -13,7 +13,9 @@ const MyRecipeList = () => {
     return <RecipeItem recipe={recipe} recipeId={recipe._id} />;
   });
 
-  return <div className="flex flex-row w-full">{mappedRecipes}</div>;
+  return (
+    <div className="flex flex-wrap gap-4 w-full h-full">{mappedRecipes}</div>
+  );
 };
 
 export default MyRecipeList;

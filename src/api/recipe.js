@@ -38,21 +38,41 @@ const createRecipe = async ({
   return data;
 };
 
-const updateRecipe = async (
-  recipeId,
-  title,
-  shortDescription,
-  description,
-  image
-) => {
-  const { data } = await instance.put(`/recipes/${recipeId}`, {
-    title,
-    shortDescription,
-    description,
-    image,
+const updateRecipe = async (data) => {
+  const formData = new FormData();
+  console.log(data);
+  for (let key in data) {
+    if (!["ingredients", "image", "selectedCategory"].includes(key)) {
+      formData.append(key, data[key]);
+    }
+  }
+  if (data.image) {
+    formData.append("image", data.image);
+  }
+  formData.append("category", data.selectedCategory);
+  data.ingredients.forEach((ingredient) => {
+    formData.append("ingredients", ingredient);
   });
-  return data;
+
+  const res = await instance.put(`/recipes/${data._id}`, formData);
+  return res.data;
 };
+
+// const updateRecipe = async (
+//   recipeId,
+//   title,
+//   shortDescription,
+//   description,
+//   image
+// ) => {
+//   const { data } = await instance.put(`/recipes/${recipeId}`, {
+//     title,
+//     shortDescription,
+//     description,
+//     image,
+//   });
+//   return data;
+// };
 
 const deleteRecipe = async (recipeId) => {
   const { data } = await instance.delete(`/recipes/${recipeId}`);

@@ -46,7 +46,7 @@ const MyProfile = () => {
   }, [isDropdownOpen]);
 
   return (
-    <div className="bg-[#333333] w-full h-screen pt-[100px] px-[150px]">
+    <div className="bg-[#333333] w-full min-h-screen pt-[100px] px-[150px]">
       <div className="flex flex-row gap-[30px]">
         <div className="bg-white py-[30px] gap-[20px] w-1/3 flex flex-row justify-center items-center rounded-b-3xl drop-shadow-[0_30px_30px_rgba(0,0,0,0.60)]">
           <div className="h-[80px] w-[80px] border border-solid-[2px] border-white rounded-full overflow-hidden ">
@@ -193,11 +193,11 @@ const MyProfile = () => {
           <span className="font-bold text-[30px]">+</span>Create Recipe
         </button>
         <h1 className="text-white text-[24px] font-bold items-center">
-          BROWSE BY CUSINES
+          MY RECIPES
         </h1>
       </div>
       <RecipeCreate show={show} onClose={onClose} onSave={() => {}} />
-      <div class="flex flex-row gap-[30px] w-full h-fit items-center justify-around ">
+      <div class="w-full h-full">
         <MyRecipeList />
       </div>
     </div>

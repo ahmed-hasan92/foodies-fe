@@ -30,6 +30,9 @@ const register = async (username, password, image) => {
     }
 
     const response = await instance.post("/user/signup", formData);
+    if (response.data?.token) {
+      storeToken(response.data.token);
+    }
     return response.data;
   } catch (error) {
     console.error("Registration error:", error);
@@ -51,7 +54,7 @@ const checkToken = () => {
       localStorage.removeItem("token");
       return false;
     }
-    return true;
+    return decode;
   }
   return false;
 };
@@ -73,39 +76,39 @@ const getAllUsers = async () => {
   return data;
 };
 
-const createARecipe = async (
-  title,
-  shortDescription,
-  description,
-  imageFile,
-  categoryId,
-  ingredients
-) => {
-  const formData = new FormData();
-  formData.append("title", title);
-  formData.append("shortDescription", shortDescription);
-  formData.append("description", description);
-  formData.append("image", imageFile);
-  ingredients.forEach((ingredientId) => {
-    formData.append("ingredients", ingredientId); // Append each ingredient ID
-  });
+// const createARecipe = async (
+//   title,
+//   shortDescription,
+//   description,
+//   imageFile,
+//   categoryId,
+//   ingredients
+// ) => {
+//   const formData = new FormData();
+//   formData.append("title", title);
+//   formData.append("shortDescription", shortDescription);
+//   formData.append("description", description);
+//   formData.append("image", imageFile);
+//   ingredients.forEach((ingredientId) => {
+//     formData.append("ingredients", ingredientId); // Append each ingredient ID
+//   });
 
-  if (checkToken()) {
-    const token = localStorage.getItem("token");
-    const { data } = await instance.post(
-      `/user/recipe/${categoryId}`,
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`, // Include JWT token
-        },
-      }
-    );
-    return data;
-  } else {
-    throw new Error("Authentication token is invalid or expired.");
-  }
-};
+//   if (checkToken()) {
+//     const token = localStorage.getItem("token");
+//     const { data } = await instance.post(
+//       `/user/recipe/${categoryId}`,
+//       formData,
+//       {
+//         headers: {
+//           Authorization: `Bearer ${token}`, // Include JWT token
+//         },
+//       }
+//     );
+//     return data;
+//   } else {
+//     throw new Error("Authentication token is invalid or expired.");
+//   }
+// };
 
 const getMyRecipes = async () => {
   const { data } = await instance.get("/user/myRecipe");
@@ -120,6 +123,6 @@ export {
   checkToken,
   storeToken,
   logout,
-  createARecipe,
+  // createARecipe,
   getMyRecipes,
 };

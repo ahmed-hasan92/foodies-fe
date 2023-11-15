@@ -8,9 +8,9 @@ import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import MyRecipes from "./pages/MyRecipes";
 import MyProfile from "./pages/MyProfile";
 import UserContext from "./context/UserContext";
+import Chefs from "./pages/Chefs";
 import RecipeDetails from "./components/RecipeDetails";
 
 function App() {
@@ -32,8 +32,8 @@ function App() {
           <Route path="/login" Component={Login} />
           <Route path="/register" Component={Register} />
           <Route path="/profile" Component={MyProfile} />
-          <Route path="/recipes" Component={MyRecipes} />
-          <Route path="/recipes/:recipeId" Component={RecipeDetails} />
+          <Route path="/chefs" Component={Chefs} />
+          <Route path="/recipes/chosen/:recipeId" Component={RecipeDetails} />
         </Routes>
       </div>
     </UserContext.Provider>

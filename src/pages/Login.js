@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import ImageCarousel from "./ImageCarousel";
-import { login } from "../api/auth";
+import { checkToken, login } from "../api/auth";
 import { useMutation } from "@tanstack/react-query";
 import UserContext from "../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ const Login = () => {
     mutationKey: ["login"],
     mutationFn: () => login(loginUsername, loginPassword),
     onSuccess: () => {
-      setUser(true);
+      setUser(checkToken());
       navigate("/");
     },
   });
