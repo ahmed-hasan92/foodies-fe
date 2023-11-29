@@ -1,14 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { checkToken, register } from "../api/auth";
+import UserContext from "../context/UserContext";
 
 const Register = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
-  const [user, setUser] = useState(false);
+  const { user, setUser } = useContext(UserContext);
 
   const { mutate, isPending, error } = useMutation({
     mutationKey: ["register"],

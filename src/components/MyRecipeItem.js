@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RecipeItem = ({ recipe, recipeId }) => {
+const MyRecipeItem = ({ recipe, recipeId }) => {
   if (!recipe) {
     return <div>Loading...</div>;
   }
@@ -23,9 +23,7 @@ const RecipeItem = ({ recipe, recipeId }) => {
         <p class="mb-3 text-base italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           {recipe.shortDescription}
         </p>
-        <p class="mb-3 text-base normal text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          Done by <span className="font-bold">{recipe.user.username}</span>
-        </p>
+
         <Link to={`/recipes/chosen/${recipe._id}`}>
           <button class="rounded-full bg-neutral-900 py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60 cursor-pointer hover:bg-[#910808] hover:scale-125 hover:transition-transform hover:duration-500">
             Read Recipe
@@ -36,4 +34,4 @@ const RecipeItem = ({ recipe, recipeId }) => {
   );
 };
 
-export default RecipeItem;
+export default MyRecipeItem;

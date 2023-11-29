@@ -6,7 +6,7 @@ import IngredientsDropdown from "./IngredientsDropdown";
 import { XCircleIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const RecipeCreate = ({ show, onClose }) => {
+const RecipeCreateHome = ({ show, onClose }) => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const RecipeCreate = ({ show, onClose }) => {
         setShowRecipeAddedMessage(false);
         onClose();
       }, 3000);
-      navigate("/profile");
+      navigate("/");
     },
   });
 
@@ -175,12 +175,7 @@ const RecipeCreate = ({ show, onClose }) => {
             />
           </div>
           <IngredientsDropdown selected={selected} setSelected={setSelected} />
-          {showRecipeAddedMessage && (
-            <div className="text-[#910808] text-center mt-4 font-bold">
-              You successfully added a recipe!
-            </div>
-          )}
-          <div className="mb-6 mt-6">
+          <div className="mb-6">
             <label
               htmlFor="description"
               className="block text-[#333333] text-sm font-medium mb-2"
@@ -196,22 +191,25 @@ const RecipeCreate = ({ show, onClose }) => {
               required
             />
           </div>
-          <div className="flex flex-col justify-center">
-            <div className="flex flex-row justify-center">
-              <button
-                type="submit"
-                className="px-4 py-2 bg-[#910808] text-white rounded-md hover:bg-[#b73232] transition-colors"
-              >
-                Save
-              </button>
-              <button
-                type="button"
-                onClick={onClose}
-                className="ml-2 px-4 py-2 bg-[#333333] text-white rounded-md hover:bg-[#444444] transition-colors"
-              >
-                Cancel
-              </button>
-            </div>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="px-4 py-2 bg-[#910808] text-white rounded-md hover:bg-[#b73232] transition-colors"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              className="ml-2 px-4 py-2 bg-[#333333] text-white rounded-md hover:bg-[#444444] transition-colors"
+            >
+              Cancel
+            </button>
+            {showRecipeAddedMessage && (
+              <div className="text-[#910808] text-center mt-4 font-bold">
+                You successfully added a recipe!
+              </div>
+            )}
           </div>
         </form>
       </div>
@@ -219,4 +217,4 @@ const RecipeCreate = ({ show, onClose }) => {
   );
 };
 
-export default RecipeCreate;
+export default RecipeCreateHome;

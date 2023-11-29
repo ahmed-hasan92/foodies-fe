@@ -4,13 +4,13 @@ import {
   UserCircleIcon,
   ArrowRightOnRectangleIcon,
   PlusIcon,
-  QueueListIcon,
   PowerIcon,
 } from "@heroicons/react/24/solid";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { logout } from "../api/auth";
 import { useContext } from "react";
+import { ChefHatIcon } from "lucide-react";
 
 function NavBar() {
   const { user, setUser } = useContext(UserContext);
@@ -24,79 +24,81 @@ function NavBar() {
   };
 
   return (
-    <div className="fixed top-0 z-50 h-[100px] flex flex-row w-full items-center drop-shadow-[0_30px_30px_rgba(0,0,0,0.60)] justify-center bg-[#910808] text-white sm:text-sm lg:text-2xl">
-      <div className="w-[10%] h-full flex justify-start">
-        <img
-          className="w-[80px]"
-          src="/assets/logo/foodify-logo.svg"
-          alt="SVG"
-        />
+    <div className="fixed top-0 z-50 h-[100px] flex flex-row w-full items-center drop-shadow-[0_30px_30px_rgba(0,0,0,0.60)] justify-center bg-[#910808] text-white sm:text-sm lg:text-lg">
+      <div className="w-[15%] h-full flex justify-center items-center">
+        <Link to="login">
+          <img
+            className="w-[80px] min-h-[10px]"
+            src="/assets/logo/foodify-logo.svg"
+            alt="SVG"
+          />
+        </Link>
       </div>
-      <div className="w-[80%] flex justify-center items-center">
+      <div className="w-[70%] flex justify-center items-center">
         <List className=" w-full flex flex-row gap-[50px] justify-center items-center">
           {!user ? (
             <>
               <NavLink to="login">
-                <ListItem className="w-fit px-[10px] flex justify-center lg:text-xl sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
+                <ListItem className="w-fit px-[10px] flex justify-center lg:text-lg sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
                   <ListItemPrefix>
                     <ArrowRightOnRectangleIcon className="h-5 w-5" />
                   </ListItemPrefix>
-                  Signin
+                  SIGNIN
                 </ListItem>
               </NavLink>
               <NavLink to="/register">
-                <ListItem className="w-fit px-[10px] flex justify-center lg:text-xl sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
+                <ListItem className="w-fit px-[10px] flex justify-center lg:text-lg sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
                   <ListItemPrefix>
                     <PlusIcon className="h-5 w-5" />
                   </ListItemPrefix>
-                  Register
+                  REGISTER
                 </ListItem>
               </NavLink>
             </>
           ) : (
             <>
               <NavLink to="/">
-                <ListItem className="w-fit px-[10px] flex justify-center lg:text-xl sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
+                <ListItem className="w-fit px-[10px] flex justify-center lg:text-lg sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
                   <ListItemPrefix>
                     <HomeIcon className="h-5 w-5" />
                   </ListItemPrefix>
-                  Home
+                  HOME
                 </ListItem>
               </NavLink>
               <NavLink to="/profile">
-                <ListItem className="w-fit px-[10px] flex justify-center lg:text-xl sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
+                <ListItem className="w-fit px-[10px] flex justify-center lg:text-lg sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
                   <ListItemPrefix>
                     <UserCircleIcon className="h-5 w-5" />
                   </ListItemPrefix>
-                  My Profile
+                  MY PROFILE
                 </ListItem>
               </NavLink>
               <NavLink to="/chefs">
-                <ListItem className="w-fit px-[10px] flex justify-center lg:text-xl sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
+                <ListItem className="w-fit px-[10px] flex justify-center lg:text-lg sm:text-sm active:bg-[#b73232] hover:bg-[#b73232] cursor-pointer">
                   <ListItemPrefix>
-                    <QueueListIcon className="h-5 w-5" />
+                    <ChefHatIcon className="h-5 w-5" />
                   </ListItemPrefix>
-                  Chefs
+                  ALL CHEFS
                 </ListItem>
               </NavLink>
               <ListItem
                 onClick={() => {
                   handleLogout();
                 }}
-                className="w-[10%] px-[10px] flex justify-center lg:text-xl sm:text-sm hover:bg-[#b73232] cursor-pointer"
+                className="w-[10%] px-[10px] flex justify-center lg:text-lg sm:text-sm hover:bg-[#b73232] cursor-pointer"
               >
                 <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
                 </ListItemPrefix>
-                Logout
+                LOGOUT
               </ListItem>
             </>
           )}
         </List>
       </div>
-      <div className="w-fit flex justify-center text-center items-center">
+      <div className="w-[15%] flex justify-center items-center">
         <img
-          className="h-[25px]"
+          className="h-[25px] min-h-[10px]"
           src="/assets/navbar/socials-navbar.svg"
           alt="SVG"
         />

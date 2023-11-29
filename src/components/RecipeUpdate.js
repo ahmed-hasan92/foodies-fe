@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import CategoryList from "./CategoryList";
 import IngredientsDropdown from "./IngredientsDropdown";
 import { updateRecipe } from "../api/recipe";
+import { XCircleIcon } from "lucide-react";
 
 const RecipeUpdate = ({ show, onClose, recipeData }) => {
   const [title, setTitle] = useState("");
@@ -12,14 +13,15 @@ const RecipeUpdate = ({ show, onClose, recipeData }) => {
   const [description, setDescription] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [selected, setSelected] = useState([]);
-
   const [selectedCategory, setSelectedCategory] = useState("");
   const [showRecipeUpdatedMessage, setShowRecipeUpdatedMessage] =
     useState(false);
+
   const queryClient = useQueryClient();
   const ingredients = selected?.map((select) => {
     return select.value;
   });
+
   useEffect(() => {
     console.log(recipeData);
     if (recipeData) {
@@ -98,10 +100,15 @@ const RecipeUpdate = ({ show, onClose, recipeData }) => {
 
   return (
     <div className="fixed inset-0 bg-[#333333] bg-opacity-75 flex items-center justify-center z-10 ">
-      <div className="bg-dotted-paper bg-contain rounded-md shadow-md w-full max-w-[50%] p-6 overflow-scroll max-h-[70%]">
-        <h2 className="text-3xl text-[#910808] font-semibold mb-6">
-          Create Recipe
-        </h2>
+      <div className="bg-dotted-paper bg-contain rounded-md shadow-md w-full max-w-[50%] p-6 overflow-scroll max-h-[80%]">
+        <div className="flex justify-between">
+          <h2 className="text-3xl text-[#910808] font-semibold mb-6">
+            Update Recipe
+          </h2>
+          <div className="text-[#333333] cursor-pointer" onClick={onClose}>
+            <XCircleIcon />
+          </div>
+        </div>
         <form onSubmit={handleFormSubmit} className="text-black">
           <div className="mb-4">
             <label
@@ -182,7 +189,12 @@ const RecipeUpdate = ({ show, onClose, recipeData }) => {
             />
           </div>
           <IngredientsDropdown selected={selected} setSelected={setSelected} />
-          <div className="mb-6">
+          {showRecipeUpdatedMessage && (
+            <div className="text-[#910808] text-center font-bold mt-4">
+              You successfully updated the recipe!
+            </div>
+          )}
+          <div className="mb-6 mt-6">
             <label
               htmlFor="description"
               className="block text-[#333333] text-sm font-medium mb-2"
@@ -197,25 +209,22 @@ const RecipeUpdate = ({ show, onClose, recipeData }) => {
               rows={8}
             />
           </div>
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="px-4 py-2 bg-[#910808] text-white rounded-md hover:bg-[#b73232] transition-colors"
-            >
-              Save
-            </button>
-            <button
-              type="button"
-              onClick={onClose}
-              className="ml-2 px-4 py-2 bg-[#333333] text-white rounded-md hover:bg-[#444444] transition-colors"
-            >
-              Cancel
-            </button>
-            {showRecipeUpdatedMessage && (
-              <div className="text-[#910808] text-center mt-4">
-                You successfully updated the recipe!
-              </div>
-            )}
+          <div className="flex flex-col justify-center">
+            <div className="flex flex-row justify-center">
+              <button
+                type="submit"
+                className="px-4 py-2 bg-[#910808] text-white rounded-md hover:bg-[#b73232] transition-colors"
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                onClick={onClose}
+                className="ml-2 px-4 py-2 bg-[#333333] text-white rounded-md hover:bg-[#444444] transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </form>
       </div>

@@ -28,7 +28,7 @@ const DeleteModal = ({ show, onClose, handleDelete }) => {
               data-original="#000000"
             ></path>
           </svg>
-          <div class="my-8 text-center">
+          <div class=" my-8 text-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-12 fill-red-500 inline"
@@ -55,14 +55,14 @@ const DeleteModal = ({ show, onClose, handleDelete }) => {
             <button
               type="button"
               onClick={handleDelete}
-              class="px-6 py-2 rounded text-white text-sm font-semibold border-none outline-none bg-red-500 hover:bg-red-600 active:bg-red-500"
+              class="cursor-pointer px-6 py-2 rounded text-white text-sm font-semibold border-none outline-none bg-red-500 hover:bg-red-600 active:bg-red-500"
             >
               Delete
             </button>
             <button
               type="button"
               onClick={onClose}
-              class="px-6 py-2 rounded text-black text-sm font-semibold border-none outline-none bg-gray-200 hover:bg-gray-300 active:bg-gray-200"
+              class="cursor-pointer px-6 py-2 rounded text-black text-sm font-semibold border-none outline-none bg-gray-200 hover:bg-gray-300 active:bg-gray-200"
             >
               Cancel
             </button>

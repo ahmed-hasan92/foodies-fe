@@ -110,7 +110,7 @@ const Login = () => {
               <button
                 type="button"
                 onClick={mutate}
-                className="bg-[#910808] text-white px-[30px] py-[10px] rounded-full border border-solid-[2px] border-white"
+                className="group bg-[#910808] text-white px-[30px] py-[10px] rounded-full border border-solid-[2px] border-white group-hover:"
               >
                 LOGIN
               </button>

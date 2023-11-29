@@ -29,6 +29,8 @@ const register = async (username, password, image) => {
       formData.append(key, newUser[key]);
     }
 
+    // if (image) formData.append("image", image);
+
     const response = await instance.post("/user/signup", formData);
     if (response.data?.token) {
       storeToken(response.data.token);

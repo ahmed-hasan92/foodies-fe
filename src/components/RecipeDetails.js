@@ -46,7 +46,7 @@ const RecipeDetails = () => {
 
   console.log(recipe.user._id == user._id, { user, recipe_user: recipe.user });
   return (
-    <div className="bg-[#333333] min-h-screen flex flex-row text-white pt-[100px]">
+    <div className="bg-[#333333] min-h-screen flex flex-row text-white pt-[97px]">
       <div className="w-1/2 px-[150px] ">
         <div className="bg-white py-[3px] pb-[60px] w-full flex flex-row justify-center items-center rounded-b-3xl drop-shadow-[0_30px_30px_rgba(0,0,0,0.60)]">
           <div classname="h-full w-full">
@@ -94,7 +94,7 @@ const RecipeDetails = () => {
                 recipeData={recipe}
               />
             )}
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center cursor-pointer hover:scale-110">
               {recipe.user._id == user._id && (
                 <Trash2 onClick={() => setShowDelete(true)} size={32} />
               )}

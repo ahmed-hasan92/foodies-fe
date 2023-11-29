@@ -3,7 +3,7 @@ import RecipeItem from "./RecipeItem";
 import { getAllRecipes } from "../api/recipe";
 import { useQuery } from "@tanstack/react-query";
 
-const RecipeList = ({ selectedCategory, query }) => {
+const HomeRecipesList = ({ selectedCategory, query }) => {
   const { data: recipeList } = useQuery({
     queryKey: ["recipes"],
     queryFn: () => getAllRecipes(),
@@ -14,8 +14,10 @@ const RecipeList = ({ selectedCategory, query }) => {
       return recipe.title.toLowerCase().includes(query.toLowerCase());
     })
     .filter((recipe) => {
-      console.log(selectedCategory);
-      return recipe.category?._id?.includes(selectedCategory);
+      // Check if a category is selected and if the recipe belongs to that category
+      return selectedCategory
+        ? recipe.category?._id === selectedCategory
+        : true;
     })
     .map((recipe) => {
       return <RecipeItem recipe={recipe} key={recipe._id} />;
@@ -26,4 +28,4 @@ const RecipeList = ({ selectedCategory, query }) => {
   );
 };
 
-export default RecipeList;
+export default HomeRecipesList;
